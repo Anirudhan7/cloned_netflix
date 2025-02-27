@@ -8,7 +8,7 @@ import '../widgets/app_bar_widget.dart';
 
 class ScreenDownload extends StatelessWidget {
   ScreenDownload({super.key});
-  final _widgetList =[const _SmartDownloads(), Section2(), Section3()];
+  final _widgetList = [const _SmartDownloads(), Section2(), Section3()];
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +21,12 @@ class ScreenDownload extends StatelessWidget {
         ),
       ),
       body: ListView.separated(
-        padding: EdgeInsets.all(10),
-       itemBuilder: (ctx,index)=>_widgetList[index],
-       separatorBuilder: (ctx,index)=>SizedBox(height: 25,),
-        itemCount: _widgetList.length
-      ),
+          padding: EdgeInsets.all(10),
+          itemBuilder: (ctx, index) => _widgetList[index],
+          separatorBuilder: (ctx, index) => SizedBox(
+                height: 25,
+              ),
+          itemCount: _widgetList.length),
     );
   }
 }
@@ -69,18 +70,18 @@ class Section2 extends StatelessWidget {
               ),
               DownloadsImageWidgets(
                   imageList: imageLists[0],
-                  margin: EdgeInsets.only(left: 170,top:45 ),
+                  margin: EdgeInsets.only(left: 170, top: 45),
                   angle: 25,
                   size: Size(size.width * 0.35, size.width * 0.55)),
               DownloadsImageWidgets(
                   imageList: imageLists[1],
-                  margin: EdgeInsets.only(right: 170,top:45 ),
+                  margin: EdgeInsets.only(right: 170, top: 45),
                   angle: -20,
-           size: Size(size.width * 0.35, size.width * 0.55)),
+                  size: Size(size.width * 0.35, size.width * 0.55)),
               DownloadsImageWidgets(
                   imageList: imageLists[2],
                   radius: 8,
-                  margin: EdgeInsets.only(bottom: 35,top:50),
+                  margin: EdgeInsets.only(bottom: 35, top: 50),
                   size: Size(size.width * 0.4, size.width * 0.6))
             ],
           ),
