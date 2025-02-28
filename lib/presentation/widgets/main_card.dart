@@ -9,12 +9,14 @@ class MainCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width:150,
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      width:130,
       height: 250,
       decoration: BoxDecoration(
-        borderRadius: kRadious20,
+        borderRadius: kRadious10,
            
         image:const DecorationImage(
+          fit: BoxFit.cover,
           image: NetworkImage(
               "https://image.tmdb.org/t/p/w1280/8o8kiBkWFK3gVytHdyzEWUBXVfK.jpg"),
         ),
