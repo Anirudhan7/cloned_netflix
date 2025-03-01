@@ -1,54 +1,62 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/api_constants/api_constant.dart';
 import 'package:netflix_clone/core/colors/constants/colors.dart';
+import 'package:netflix_clone/models/movie.dart';
 
 class VideoListItem extends StatelessWidget {
-  const VideoListItem({super.key, required this.index});
-
   final int index;
+  final Movies Movie;
+  VideoListItem({super.key, required this.index, required this.Movie});
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         Container(
-          color: Colors.accents[index % Colors.accents.length],
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image:
+                      NetworkImage(ApiConstants.imagePath + Movie.posterPath))),
         ),
         Align(
           alignment: Alignment.bottomCenter,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                //leftSide
+                //leftside
                 CircleAvatar(
-                  radius: 30,
                   backgroundColor: Colors.black.withOpacity(0.5),
+                  radius: 30,
                   child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      Icons.volume_off,
-                      size: 30,
-                      color: kwhite,
-                    ),
-                  ),
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.volume_off,
+                        color: kwhite,
+                        size: 30,
+                      )),
                 ),
-                //rightSide
+                //right side
+
                 Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5),
+                      padding: EdgeInsets.symmetric(vertical: 10),
                       child: CircleAvatar(
                         radius: 30,
                         backgroundImage: NetworkImage(
-                            'https://image.tmdb.org/t/p/w1280/uF5v0SPpKzC9dWXIspA1x2zEDKO.jpg'),
+                            ApiConstants.imagePath + Movie.posterPath),
                       ),
                     ),
-                    VideoActionWidget(icon: Icons.emoji_emotions, title: 'LOL'),
-                    VideoActionWidget(icon: Icons.add, title: 'My List'),
-                    VideoActionWidget(icon: Icons.share, title: 'Share'),
-                    VideoActionWidget(icon: Icons.play_arrow, title: 'Play'),
+                    VideoActionsWidget(
+                        icon: Icons.emoji_emotions, title: 'LOL'),
+                    VideoActionsWidget(icon: Icons.add, title: 'My List'),
+                    VideoActionsWidget(icon: Icons.share, title: 'Share'),
+                    VideoActionsWidget(icon: Icons.play_arrow, title: 'Play'),
                   ],
                 )
               ],
@@ -60,10 +68,11 @@ class VideoListItem extends StatelessWidget {
   }
 }
 
-class VideoActionWidget extends StatelessWidget {
+class VideoActionsWidget extends StatelessWidget {
   final IconData icon;
   final String title;
-  const VideoActionWidget({super.key, required this.icon, required this.title});
+  const VideoActionsWidget(
+      {super.key, required this.icon, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -73,13 +82,13 @@ class VideoActionWidget extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: Colors.white,
+            color: kwhite,
             size: 30,
           ),
           Text(
             title,
-            style: TextStyle(color: kwhite, fontSize: 16),
-          ),
+            style: const TextStyle(color: kwhite, fontSize: 16),
+          )
         ],
       ),
     );

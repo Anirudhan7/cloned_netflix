@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/presentation/new_and_hot/screen_new_and_hot.dart';
 
 const kwidth =SizedBox(
   width: 10,
