@@ -14,7 +14,7 @@ class ScreenDownload extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: PreferredSize(
+      appBar: const PreferredSize(
         preferredSize: Size.fromHeight(50),
         child: AppBarWidget(
           title: "Downloads",
@@ -43,7 +43,7 @@ class Section2 extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     return Column(
       children: [
-        Text(
+        const Text(
           'Introducing Downloads for you',
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -51,7 +51,7 @@ class Section2 extends StatelessWidget {
               fontSize: 23,
               fontWeight: FontWeight.bold),
         ),
-        Text(
+        const Text(
           'We will download a personalized selection of\nmovies and shows for you, so there\nis always something to watch on your\ndevice.',
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.grey, fontSize: 16),

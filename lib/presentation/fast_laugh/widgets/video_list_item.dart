@@ -26,7 +26,11 @@ class VideoListItem extends StatelessWidget {
                   backgroundColor: Colors.black.withOpacity(0.5),
                   child: IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.volume_off),
+                    icon: Icon(
+                      Icons.volume_off,
+                      size: 30,
+                      color: kwhite,
+                    ),
                   ),
                 ),
                 //rightSide
@@ -34,10 +38,11 @@ class VideoListItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical:5),
+                      padding: const EdgeInsets.symmetric(vertical: 5),
                       child: CircleAvatar(
                         radius: 30,
-                        backgroundImage: NetworkImage('https://image.tmdb.org/t/p/w1280/uF5v0SPpKzC9dWXIspA1x2zEDKO.jpg'),
+                        backgroundImage: NetworkImage(
+                            'https://image.tmdb.org/t/p/w1280/uF5v0SPpKzC9dWXIspA1x2zEDKO.jpg'),
                       ),
                     ),
                     VideoActionWidget(icon: Icons.emoji_emotions, title: 'LOL'),

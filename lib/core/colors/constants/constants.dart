@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/presentation/new_and_hot/screen_new_and_hot.dart';
 
 const kwidth =SizedBox(
   width: 10,
@@ -7,6 +8,7 @@ const kheight =SizedBox(
  height: 10,
 );
 const kheight20 =SizedBox(height: 10,);
+const kheight50 =SizedBox(height: 50,);
 //BorderRadious
 
 BorderRadius kRadious10 =BorderRadius.circular(10);
@@ -22,4 +24,6 @@ TextStyle kHomeTitleText = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
+const newAndhotTempImage ="https://media.themoviedb.org/t/p/w1066_and_h600_bestv2/rp49ILheIhBwHWiQUvDfVH1fPfI.jpg";
 
+const newAndhotTempImage2= "https://media.themoviedb.org/t/p/w500_and_h282_face/febSlgHFnZ1wjdnUJbh9PMkX8q8.jpg";
