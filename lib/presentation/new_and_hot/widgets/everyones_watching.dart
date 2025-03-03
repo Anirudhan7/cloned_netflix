@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/core/colors/constants/colors.dart';
 import 'package:netflix_clone/core/colors/constants/constants.dart';
+import 'package:netflix_clone/models/movie.dart';
 import 'package:netflix_clone/presentation/home_page/widgets/custom_button_widget.dart';
 import 'package:netflix_clone/presentation/widgets/video_widgets.dart';
 
 class EveryonesWatching extends StatelessWidget {
-  const EveryonesWatching({
+  final Movies movie;
+   EveryonesWatching({
     super.key,
+    required ,
+    required this.movie
   });
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +31,9 @@ class EveryonesWatching extends StatelessWidget {
           style: TextStyle(color: kGreyColor),
         ),
         kheight50,
-        VideoWidget(),
+        VideoWidget(image:movie.backDropPath),
         kheight,
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             CustomButtonWidget(

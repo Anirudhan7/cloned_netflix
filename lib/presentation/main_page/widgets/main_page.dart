@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:netflix_clone/core/colors/constants/colors.dart';
 import 'package:netflix_clone/presentation/downloads/screen_download.dart';
 import 'package:netflix_clone/presentation/fast_laugh/screen_fast_laugh.dart';
 import 'package:netflix_clone/presentation/home_page/screen_home.dart';
@@ -20,13 +19,13 @@ class ScreenMainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor,
-      body: SafeArea(
-        child: ValueListenableBuilder(valueListenable:indexChangedNotifier, builder:(context, index, child) {
-          return _pages[index];
-        },),
-      ),
-      bottomNavigationBar: BottomNavWidgets()
+    
+      body: ValueListenableBuilder(
+          valueListenable: indexChangeNotifier,
+          builder: (context, int value, _) {
+            return _pages[value];
+          }),
+      bottomNavigationBar: const BottomNavWidgets(),
     );
   }
 }

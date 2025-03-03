@@ -1,51 +1,52 @@
-import 'package:bordered_text/bordered_text.dart';
-import 'package:flutter/material.dart';
-import 'package:netflix_clone/core/colors/constants/colors.dart';
-import 'package:netflix_clone/core/colors/constants/constants.dart';
 
+import 'package:flutter/material.dart';
+import 'package:netflix_clone/api_constants/api_constant.dart';
+import 'package:netflix_clone/core/colors/constants/constants.dart';
+import 'package:netflix_clone/presentation/widgets/number_card.dart';
 class NumberCard extends StatelessWidget {
-  const NumberCard({super.key, required this.index});
+  final String image;
   final int index;
+  const NumberCard({super.key, required this.image, required this.index});
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      Row(children: [
-        const SizedBox(
-          width: 40,
-          height: 200,
-        ),
-        Container(
-          width: 130,
-          height: 200,
-          decoration: BoxDecoration(
-            borderRadius: kRadious10,
-            image: const DecorationImage(
-              fit: BoxFit.cover,
-              image: NetworkImage(
-                  kMainImage),
+    return Stack(
+      children: [
+        Row(
+          children: [
+            const SizedBox(
+              width: 40,
+              height: 200,
             ),
-          ),
+            Container(
+              width: 130,
+              height: 200,
+              decoration: BoxDecoration(
+                  borderRadius: kRadious10,
+                  image:  DecorationImage(
+                    fit: BoxFit.cover,
+                      image: NetworkImage(
+                          ApiConstants.imagePath+image))),
+            ),
+          ],
         ),
-      ]),
-      Positioned(
-        left: 13,
-        bottom: -40,
-        child: BorderedText(
-          strokeWidth: 10,
-          strokeColor: kwhite,
-          child: Text(
-            "${index + 1}",
-            style: TextStyle(
-              color: kbuttonColorBlack,
-              fontSize: 135,
-              fontWeight: FontWeight.bold,
+        Positioned(
+          left: 13,
+          bottom: -22,
+          child: StrokeText(
+            text: "${index+1}",
+            textStyle: const TextStyle(
               decoration: TextDecoration.none,
-              decorationColor: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 125,
+              color: Colors.black
             ),
-          ),
-        ),
-      ),
-    ]);
+            strokeColor: Colors.white,
+            strokeWidth: 3.0,
+            )
+        )
+      ],
+    );
+    
   }
 }

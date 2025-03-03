@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/core/colors/constants/colors.dart';
 import 'package:netflix_clone/core/colors/constants/constants.dart';
-import 'package:netflix_clone/presentation/home_page/widgets/custom_button_widget.dart';
+import 'package:netflix_clone/presentation/home_page/screen_home.dart';
 import 'package:netflix_clone/presentation/new_and_hot/widgets/coming_.dart';
 import 'package:netflix_clone/presentation/new_and_hot/widgets/everyones_watching.dart';
-import 'package:netflix_clone/presentation/widgets/video_widgets.dart';
 
 class ScreenNewAndHot extends StatelessWidget {
   const ScreenNewAndHot({super.key});
@@ -57,20 +56,37 @@ class ScreenNewAndHot extends StatelessWidget {
           ),
         ),
         body: TabBarView(
-            children: [_buildCommingSoon(context), _buildEveryonesWatching()]),
+          children: [
+            _buildComingSoon(),
+            _buildEveryonesWatching(),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildCommingSoon(BuildContext context) {
-    return ListView.builder(
-        itemCount: 10,
-        itemBuilder: (BuildContext context, index) => ComingSoonWidget());
+  Widget _buildComingSoon() {
+    return ValueListenableBuilder(
+      valueListenable: top10TvShows,
+      builder: (context, value, child) {
+        return ListView.builder(
+          itemCount: value.length,
+          itemBuilder: (context, index) =>
+              ComingSoonWidget(movie: value[index]),
+        );
+      },
+    );
   }
 
   Widget _buildEveryonesWatching() {
-    return ListView.builder(
-        itemCount: 10,
-        itemBuilder: (BuildContext context, index) => EveryonesWatching());
+    return ValueListenableBuilder(
+      valueListenable: trendingNow,
+      builder: (context, value, child) {
+        return ListView.builder(
+          itemCount: value.length,
+          itemBuilder: (context, index) =>   EveryonesWatching(movie: value[index]),
+        );
+      },
+    );
   }
 }

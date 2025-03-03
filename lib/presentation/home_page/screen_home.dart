@@ -11,6 +11,8 @@ import 'package:netflix_clone/presentation/widgets/main_title_card.dart';
 
 ValueNotifier<bool> scrollNotifier = ValueNotifier(true);
 ValueNotifier<List<Movies>> trendingNow = ValueNotifier([]);
+ValueNotifier<List<Movies>> topRated = ValueNotifier([]);
+ValueNotifier<List<Movies>> top10TvShows = ValueNotifier([]);
 
 int randomIndex = 0;
 
@@ -19,6 +21,8 @@ class ScreenHome extends StatelessWidget {
 
   fetchDatas() async {
     trendingNow.value = await Api().getTrendingMovies();
+        topRated.value = await Api().getTopRatedMovies();
+    top10TvShows.value = await Api().getTop10TvShows();
     final random = Random();
     randomIndex = random.nextInt(10);
   }
@@ -44,49 +48,49 @@ class ScreenHome extends StatelessWidget {
                     children: [
                       ListView(
                         children: [
-                          // FutureBuilder(
-                          //     future: Api().getTrendingMovies(),
-                          //     builder: (context, snapshot) => snapshot.hasData
-                          //         ? BackgroundCard(
-                          //             imageUrl: snapshot
-                          //                 .data![randomIndex].posterPath)
-                          //         : SizedBox(
-                          //             height: 700,
-                          //             width: double.infinity,
-                          //             child: Center(
-                          //               child: CircularProgressIndicator(),
-                          //             ),
-                          //           )),
                           FutureBuilder(
-                            future: Api().getTrendingMovies(),
-                            builder: (context, snapshot) {
-                              if (snapshot.hasData) {
-                                final movies = snapshot.data!;
-                                final random = Random();
-                                final safeIndex = random.nextInt(
-                                    movies.length); // Ensures a valid index
-                                return BackgroundCard(
-                                    imageUrl: movies[safeIndex].posterPath);
-                              } else {
-                                return SizedBox(
-                                  height: 700,
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: CircularProgressIndicator(),
-                                  ),
-                                );
-                              }
-                            },
-                          ),
+                              future: Api().getTrendingMovies(),
+                              builder: (context, snapshot) => snapshot.hasData
+                                  ? BackgroundCard(
+                                      imageUrl: snapshot
+                                          .data![randomIndex].posterPath)
+                                  : SizedBox(
+                                      height: 700,
+                                      width: double.infinity,
+                                      child: Center(
+                                        child: CircularProgressIndicator(),
+                                      ),
+                                    )),
+                          // FutureBuilder(
+                          //   future: Api().getTrendingMovies(),
+                          //   builder: (context, snapshot) {
+                          //     if (snapshot.hasData) {
+                          //       final movies = snapshot.data!;
+                          //       final random = Random();
+                          //       final safeIndex = random.nextInt(
+                          //           movies.length); // Ensures a valid index
+                          //       return BackgroundCard(
+                          //           imageUrl: movies[safeIndex].posterPath);
+                          //     } else {
+                          //       return SizedBox(
+                          //         height: 700,
+                          //         width: double.infinity,
+                          //         child: Center(
+                          //           child: CircularProgressIndicator(),
+                          //         ),
+                          //       );
+                          //     }
+                          //   },
+                          // ),
 
-                          MainTitleCard(title: "Released in the past year"),
-                          MainTitleCard(title: "Trending Now"),
+                          MainTitleCard(title: "Top rated",listNotifier: topRated,),
+                          MainTitleCard(title: "Trending Now",listNotifier: trendingNow,),
                           kheight,
-                          MainTitleCard(title: "Tense Dramas"),
+                          MainTitleCard(title: "Tense Dramas",listNotifier: top10TvShows,),
                           kheight,
-                          NumberTitleCard(),
+                          NumberTitleCard(listNotifier: top10TvShows),
                           kheight,
-                          MainTitleCard(title: "South Indian Cinemas"),
+                          MainTitleCard(title: "South Indian Cinemas",listNotifier: top10TvShows,),
                           kheight
                         ],
                       ),

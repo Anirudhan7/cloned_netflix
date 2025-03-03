@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:netflix_clone/api_constants/api_constant.dart';
 import 'package:netflix_clone/core/colors/constants/colors.dart';
 import 'package:netflix_clone/core/colors/constants/constants.dart';
 import 'package:netflix_clone/presentation/home_page/widgets/custom_button_widget.dart';
@@ -13,9 +14,9 @@ final String imageUrl;
               Container(
                 width: double.infinity,
                 height: 600,
-                decoration: const BoxDecoration(
+                decoration:  BoxDecoration(
                   image: DecorationImage(
-                    image: NetworkImage(kMainImage),
+                    image: NetworkImage(ApiConstants.imagePath+imageUrl),
                   ),
                 ),
               ),

@@ -16,7 +16,7 @@ class ScreenFastLaugh extends StatelessWidget {
             scrollDirection: Axis.vertical,
             children: List.generate(value.length, (index) {
               return VideoListItem(
-                Movie: value[index],
+                movie: value[index],
                 index: index,
               );
             }));
@@ -24,4 +24,3 @@ class ScreenFastLaugh extends StatelessWidget {
     )));
   }
 }
-

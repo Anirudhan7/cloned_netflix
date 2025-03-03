@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/core/colors/constants/colors.dart';
 import 'package:netflix_clone/core/colors/constants/constants.dart';
+import 'package:netflix_clone/models/movie.dart';
 import 'package:netflix_clone/presentation/home_page/widgets/custom_button_widget.dart';
 import 'package:netflix_clone/presentation/widgets/video_widgets.dart';
 
 class ComingSoonWidget extends StatelessWidget {
+  final Movies movie;
   const ComingSoonWidget({
+    required this.movie,
     super.key,
   });
 
@@ -42,12 +45,13 @@ class ComingSoonWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-             const VideoWidget(),
-              const Row(
+             VideoWidget(image: movie.backDropPath),
+              kheight,
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "TALLGIRL2",
+                    movie.title,
                     style: TextStyle(
                       fontSize: 30,
                       letterSpacing: -5,
@@ -63,6 +67,8 @@ class ComingSoonWidget extends StatelessWidget {
                         iconSize: 20,
                         textSize: 12,
                       ),
+                       kwidth,
+                      kwidth,
                       CustomButtonWidget(
                         icon: Icons.info,
                         title: "Info",
@@ -74,16 +80,16 @@ class ComingSoonWidget extends StatelessWidget {
                   )
                 ],
               ),
-              // kheight,
-              const Text("Comming on friday"),
+              kheight,
+               Text("Comming on friday"),
               kheight,
               Text(
-                "Tall Girl 2",
+                movie.title,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               kheight,
               Text(
-                "Landing the lead school; musical is  a dream come true for Jodi, untill the preassure sends her confidence -and her relationship - into a tailspain. ",
+                 movie.overView,
                 style: TextStyle(color: kGreyColor),
               )
             ],

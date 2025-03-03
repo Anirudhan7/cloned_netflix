@@ -5,8 +5,8 @@ import 'package:netflix_clone/models/movie.dart';
 
 class VideoListItem extends StatelessWidget {
   final int index;
-  final Movies Movie;
-  VideoListItem({super.key, required this.index, required this.Movie});
+  final Movies movie;
+  VideoListItem({super.key, required this.index, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class VideoListItem extends StatelessWidget {
               image: DecorationImage(
                   fit: BoxFit.cover,
                   image:
-                      NetworkImage(ApiConstants.imagePath + Movie.posterPath))),
+                      NetworkImage(ApiConstants.imagePath + movie.posterPath))),
         ),
         Align(
           alignment: Alignment.bottomCenter,
@@ -49,7 +49,7 @@ class VideoListItem extends StatelessWidget {
                       child: CircleAvatar(
                         radius: 30,
                         backgroundImage: NetworkImage(
-                            ApiConstants.imagePath + Movie.posterPath),
+                            ApiConstants.imagePath + movie.posterPath),
                       ),
                     ),
                     VideoActionsWidget(
